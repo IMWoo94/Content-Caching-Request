@@ -1,13 +1,9 @@
 package com.caching.reuserequest.sample.interceptor;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +27,10 @@ public class SampleInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 		ModelAndView modelAndView) throws Exception {
 		log.info("SampleInterceptor postHandle");
-		ServletInputStream inputStream = request.getInputStream();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-		reader.lines().forEach(it -> log.info("read {}", it));
+		// ServletInputStream inputStream = request.getInputStream();
+		// BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+		// reader.lines().forEach(it -> log.info("read {}", it));
+
 		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
 	}
 
