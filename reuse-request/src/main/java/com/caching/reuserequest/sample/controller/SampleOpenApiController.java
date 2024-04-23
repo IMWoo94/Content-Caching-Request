@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SampleOpenApiController {
 
 	@PostMapping
-	public ResponseEntity<SampleResponse> ok(@RequestBody SampleRequest sampleRequest) {
+	public ResponseEntity<SampleResponse> ok(@RequestBody(required = false) SampleRequest sampleRequest) {
 		log.info("Received request: {}", sampleRequest);
 		return new ResponseEntity<>(new SampleResponse("200", "OK"), HttpStatus.OK);
 	}
