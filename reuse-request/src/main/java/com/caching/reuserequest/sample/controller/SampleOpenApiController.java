@@ -1,6 +1,7 @@
 package com.caching.reuserequest.sample.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class SampleOpenApiController {
 		return new ResponseEntity<>(new SampleResponse("200", "OK"), HttpStatus.OK);
 	}
 
-	@PostMapping("/form")
+	@PostMapping(path = "/form", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 	public ResponseEntity<SampleResponse> okForm(SampleRequest sampleRequest) {
 		log.info("Received request: {}", sampleRequest);
 		return new ResponseEntity<>(new SampleResponse("200", "OK"), HttpStatus.OK);
