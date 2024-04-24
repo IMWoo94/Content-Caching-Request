@@ -22,4 +22,10 @@ public class SampleOpenApiController {
 		log.info("Received request: {}", sampleRequest);
 		return new ResponseEntity<>(new SampleResponse("200", "OK"), HttpStatus.OK);
 	}
+
+	@PostMapping("/form")
+	public ResponseEntity<SampleResponse> okForm(SampleRequest sampleRequest) {
+		log.info("Received request: {}", sampleRequest);
+		return new ResponseEntity<>(new SampleResponse("200", "OK"), HttpStatus.OK);
+	}
 }

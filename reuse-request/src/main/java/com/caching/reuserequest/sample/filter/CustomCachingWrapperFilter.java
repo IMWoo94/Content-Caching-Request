@@ -3,6 +3,7 @@ package com.caching.reuserequest.sample.filter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -33,6 +34,9 @@ public class CustomCachingWrapperFilter extends OncePerRequestFilter {
 		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 		br.lines().forEach(it -> log.info("inputStream read {}", it));
 		log.info("inputStream read end");
+
+		Enumeration<String> parameterNames = req.getParameterNames();
+		log.info("parameterNames read {}", parameterNames);
 
 		filterChain.doFilter(req, res);
 

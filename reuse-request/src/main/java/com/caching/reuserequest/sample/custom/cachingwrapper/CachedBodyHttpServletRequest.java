@@ -11,14 +11,19 @@ import org.springframework.util.StreamUtils;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class CachedBodyHttpServletRequest extends HttpServletRequestWrapper {
 	private byte[] cachedBody;
 
 	public CachedBodyHttpServletRequest(HttpServletRequest request) throws IOException {
 		super(request);
+		request.getParameterNames();
+		request.getParameterMap();
 		InputStream requestInputStream = request.getInputStream();
 		this.cachedBody = StreamUtils.copyToByteArray(requestInputStream);
+		log.info("cachedBody length: {}", this.cachedBody.length);
 	}
 
 	@Override

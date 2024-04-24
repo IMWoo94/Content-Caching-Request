@@ -1,8 +1,7 @@
 package com.caching.reuserequest.sample.filter;
 
 import java.io.IOException;
-
-import org.springframework.stereotype.Component;
+import java.util.Enumeration;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -11,7 +10,7 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+// @Component
 @Slf4j
 public class SampleFilter implements Filter {
 
@@ -21,6 +20,8 @@ public class SampleFilter implements Filter {
 		ServletException {
 
 		log.info("SampleFilter doFilter before");
+		Enumeration<String> parameterNames = servletRequest.getParameterNames();
+		log.info("parameterNames read {}", parameterNames);
 		filterChain.doFilter(servletRequest, servletResponse);
 		log.info("SampleFilter doFilter after");
 

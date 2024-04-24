@@ -25,7 +25,7 @@ public class WebConfiguration implements WebMvcConfigurer {
 		// registry.addInterceptor(cachingWrapperInterceptor)
 		// 	.addPathPatterns("/open-api/**");
 
-		registry.addInterceptor(customCachingWrapperInterceptor)
-			.addPathPatterns("/open-api/**");
+		// registry.addInterceptor(customCachingWrapperInterceptor)
+		// 	.addPathPatterns("/open-api/**");
 	}
 }
